@@ -42,7 +42,8 @@ function Nav() {
             <div className='w-[30%] lg:flex items-center justify-center gap-4 hidden'>
             
             { !userData && <IoPersonCircle className='w-[50px] h-[50px] fill-black cursor-pointer' onClick={() => setShow(prev=>!prev)} />}
-            { userData && <div className='w-[50px] h-[50px] rounded-full text-white flex items-center justify-center text-[20px] border-2 bg-black border-white cursor-pointer' onClick={() => setShow(prev=>!prev)}>
+            { userData?.photoUrl ?  <img src={userData?.photoUrl} className='w-[50px] h-[50px] rounded-full text-white flex items-center justify-center text-[20px] border-2 bg-black border-white cursor-pointer' onClick={() => setShow(prev=>!prev)} /> :
+            <div className='w-[50px] h-[50px] rounded-full text-white flex items-center justify-center text-[20px] border-2 bg-black border-white cursor-pointer' onClick={() => setShow(prev=>!prev)}>
             {userData?.name.slice(0,1).toUpperCase()}
             </div>}
             { userData?.role === "educator" &&  <div className='px-[20px] py-[10px] border-2 lg:border-white border-black lg:text-white bg-[black] text-black rounded-[10px] text-[18px] font-light cursor-pointer'>Dashboard</div> }
@@ -62,7 +63,9 @@ function Nav() {
             <ImCross className='w-[35px] h-[35px] fill-white absolute top-5 right-[4%]' onClick={()=>setShowHam(prev=>!prev)} />
 
             { !userData && <IoPersonCircle className='w-[50px] h-[50px] fill-black cursor-pointer'/>}
-            { userData && <div className='w-[50px] h-[50px] rounded-full text-white flex items-center justify-center text-[20px] border-2 bg-black border-white cursor-pointer'>
+            { userData?.photoUrl ? <img src={userData?.photoUrl} className='w-[50px] h-[50px] rounded-full text-white flex items-center justify-center text-[20px] border-2 bg-black border-white cursor-pointer'/>
+            : 
+            <div className='w-[50px] h-[50px] rounded-full text-white flex items-center justify-center text-[20px] border-2 bg-black border-white cursor-pointer'>
             {userData?.name.slice(0,1).toUpperCase()}
             </div>}
             
