@@ -18,16 +18,24 @@ export const updateProfile = async (req, res) => {
     try {
         const userId = req.userId
         const {description, name} = req.body
-        let photoUrl
+        
+        const updateData = { name, description }
+
         if(req.file){
-            photoUrl = await uploadOnCloudnary(req.file.path)
+            const photoUrl = await uploadOnCloudnary(req.file.path)
+            if (!photoUrl) {
+                return res.status(500).json({ message: "Image upload failed" });
+            }
+            updateData.photoUrl = photoUrl;
         }
-        const user = await User.findByIdAndUpdate(userId, {name, description, photoUrl})
+
+        const user = await User.findByIdAndUpdate(userId, updateData, { new: true })
          if(!user){
             return res.status(404).json({message: "User not found"})
         }
         return res.status(200).json(user)
     } catch (error) {
-        return res.status(500).json({message: `Update Profile Error : ${error}`})
+        console.error("Update Profile Error:", error);
+        return res.status(500).json({message: error.message || "Update Profile Error"})
     }
 }

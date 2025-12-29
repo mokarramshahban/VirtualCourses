@@ -55,7 +55,7 @@ function Nav() {
               <span className='bg-[black] text-white px-[30px] py-[10px] rounded-2xl hover:bg-gray-600'>My Courses</span>
             </div>}
             </div>
-            <RxHamburgerMenu className='w-[35px] h-[35px] lg:hidden fill-white cursor-pointer' onClick={()=>setShowHam(prev=>!prev)} />
+            <RxHamburgerMenu className='w-[35px] h-[35px] lg:hidden text-white cursor-pointer' onClick={()=>setShowHam(prev=>!prev)} />
 
             <div className={`fixed top-0 left-0 w-[100vw] h-[100vh] bg-[#000000d6] flex items-center justify-center flex-col gap-5 z-10 lg:hidden ${showHam ? "translate-x-[0] transition duration-600" : "translate-x-[-100%] transition duration-600" }`}>
 

@@ -21,7 +21,7 @@ const uploadOnCloudnary = async (filePath) => {
            fs.unlinkSync(filePath);
         }
         console.log(error);
-        return null;
+        throw error;
     }
 }
 
